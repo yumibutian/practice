@@ -1,0 +1,76 @@
+server:
+  port: 63210
+
+spring:
+  application:
+    name: practice
+  profiles:
+    default: dev
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/quiz?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: ${DB_PASSWORD:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      database: 0
+  servlet:
+    multipart:
+      # 引用业务层单文件上限，避免与 quiz.file.max-size 漂移
+      max-file-size: ${quiz.file.max-size}
+      # 请求上限要比单文件上限大，容纳表单等额外开销
+      max-request-size: 26214400
+  jackson:
+    default-property-inclusion: non_null
+    time-zone: Asia/Shanghai
+
+mybatis-plus:
+  # SQL 映射文件位置，见计划 0.3 节。Flyway 迁移脚本不在这里（resources/db/migration）
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+quiz:
+  storage:
+    type: local
+    local:
+      root: ./data/storage
+  file:
+    max-size: 20971520
+    expire-days: 7
+    allowed-ext: xlsx,xls,csv,md,txt,json,pdf,docx,doc
+  wrong:
+    mastered-streak: 3
+  exam:
+    default-type-score:
+      single: 2
+      multiple: 4
+      judge: 1
+      fill: 2
+      essay: 5
+    min-type-score: 1
+    max-type-score: 10
+
+  parse:
+    executor:
+      core-pool-size: 2
+      max-pool-size: 4
+      queue-capacity: 50
+    single-user-lock-ttl-seconds: 600
+    zombie-timeout-seconds: 300
+    zombie-max-retry: 3
+    max-questions-per-file: 2000
+
+logging:
+  level:
+    # SQL 走日志框架，开发时想看可临时用 LOGGING_LEVEL_COM_QUIZ=debug 提升
+    com.quiz: info
