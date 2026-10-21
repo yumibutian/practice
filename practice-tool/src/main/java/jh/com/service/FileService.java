@@ -47,7 +47,7 @@ public class FileService {
         this.storage = storage;
         this.maxSize = maxSize;
         this.expireDays = expireDays;
-        // 构造时解析一次，避免每次 init 都 split
+        // 构造时解析一次
         this.allowedExt = Arrays.stream(allowedExt.split(","))
             .map(String::trim).map(String::toLowerCase).collect(Collectors.toUnmodifiableSet());
     }
@@ -93,7 +93,7 @@ public class FileService {
         return FileInitResp.needUpload(qbFile.getId());
     }
 
-     //查同一用户下未删除的同 hash 记录。软删除行不参与复用
+     //查同一用户下未删除的同 hash 记录
     private File findByHash(Long userId, String fileHash) {
         return fileMapper.selectOne(Wrappers.<File>lambdaQuery()
             .eq(File::getUserId, userId)
