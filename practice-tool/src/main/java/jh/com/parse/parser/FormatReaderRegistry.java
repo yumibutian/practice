@@ -3,6 +3,7 @@ package jh.com.parse.parser;
 
 import jh.com.common.BizException;
 import jh.com.common.ErrorCode;
+import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import java.util.Map;
 /**
  * 格式读取器策略类
  */
+@Service
 public class FormatReaderRegistry {
 
     private final Map<String, FormatReader> byExt = new HashMap<>();
