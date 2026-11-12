@@ -2,7 +2,13 @@ package jh.com.controller;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jh.com.auth.UserContext;
 import jh.com.common.ApiResponse;
+import jh.com.doto.BankDetailView;
+import jh.com.doto.BankQuestionView;
+import jh.com.doto.BankView;
+import jh.com.doto.ExamConfig;
+import jh.com.service.BankService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -17,16 +23,6 @@ import java.util.List;
 public class BankController {
 
     private final BankService bankService;
-
-    @Data
-    public static class RenameReq {
-        @NotBlank(message = "不能为空") private String name;
-    }
-
-    @Data
-    public static class PinReq {
-        private boolean pinned;
-    }
 
     @GetMapping
     public ApiResponse<List<BankView>> list() {
@@ -77,5 +73,16 @@ public class BankController {
                                                          @RequestParam(defaultValue = "0") int page,
                                                          @RequestParam(defaultValue = "20") int size) {
         return ApiResponse.ok(bankService.questions(UserContext.requireUserId(), bankId, page, size));
+    }
+
+    @Data
+    public static class RenameReq {
+        @NotBlank(message = "不能为空")
+        private String name;
+    }
+
+    @Data
+    public static class PinReq {
+        private boolean pinned;
     }
 }
