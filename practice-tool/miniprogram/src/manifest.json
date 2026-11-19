@@ -1,0 +1,21 @@
+{
+  "name": "刷题",
+  "appid": "",
+  "description": "题库导入与刷题",
+  "versionName": "1.0.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "app-plus": {
+    "usingComponents": true
+  },
+  "mp-weixin": {
+    "appid": "wx1ed935edd4c2e6e2",
+    "setting": {
+      "urlCheck": false,
+      "es6": true,
+      "minified": true
+    },
+    "usingComponents": true
+  },
+  "vueVersion": "3"
+}

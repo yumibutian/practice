@@ -1,0 +1,123 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "题库"
+      }
+    },
+    {
+      "path": "pages/import/select",
+      "style": {
+        "navigationBarTitleText": "导入题库"
+      }
+    },
+    {
+      "path": "pages/import/progress",
+      "style": {
+        "navigationBarTitleText": "正在解析"
+      }
+    },
+    {
+      "path": "pages/import/preview",
+      "style": {
+        "navigationBarTitleText": "确认题目"
+      }
+    },
+    {
+      "path": "pages/practice/start",
+      "style": {
+        "navigationBarTitleText": "开始练习"
+      }
+    },
+    {
+      "path": "pages/practice/practice",
+      "style": {
+        "navigationBarTitleText": "练习"
+      }
+    },
+    {
+      "path": "pages/practice/result",
+      "style": {
+        "navigationBarTitleText": "练习报告"
+      }
+    },
+    {
+      "path": "pages/exam/config",
+      "style": {
+        "navigationBarTitleText": "模拟考试设置"
+      }
+    },
+    {
+      "path": "pages/exam/exam",
+      "style": {
+        "navigationBarTitleText": "模拟考试"
+      }
+    },
+    {
+      "path": "pages/exam/result",
+      "style": {
+        "navigationBarTitleText": "考试报告"
+      }
+    },
+    {
+      "path": "pages/wrong/wrong",
+      "style": {
+        "navigationBarTitleText": "错题本"
+      }
+    },
+    {
+      "path": "pages/wrong/bank",
+      "style": {
+        "navigationBarTitleText": "错题明细"
+      }
+    },
+    {
+      "path": "pages/mine/mine",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/mine/storage",
+      "style": {
+        "navigationBarTitleText": "存储与缓存"
+      }
+    },
+    {
+      "path": "pages/mine/legal",
+      "style": {
+        "navigationBarTitleText": "用户协议与隐私政策"
+      }
+    },
+    {
+      "path": "pages/mine/feedback",
+      "style": {
+        "navigationBarTitleText": "内容反馈与举报"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f6f7fb"
+  },
+  "tabBar": {
+    "color": "#8a90a3",
+    "selectedColor": "#4f6ef7",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "题库"
+      },
+      {
+        "pagePath": "pages/wrong/wrong",
+        "text": "错题本"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  }
+}
